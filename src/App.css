@@ -3,16 +3,45 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  user-select: none; /* Impede a seleção de texto */
+  user-select: none;
 }
 
 /* Logo */
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
 .logo-container .logo {
-  max-height: 100px;
+  max-height: 100px; /* Altura máxima para telas maiores */
   max-width: 100%;
-  display: block;
-  margin: 0 auto;
+  width: auto;
+  height: auto;
   object-fit: contain;
+  transition: max-height 0.3s ease; /* Transição suave ao redimensionar */
+}
+
+/* Responsividade para a logo */
+@media (max-width: 768px) {
+  .logo-container {
+    margin-bottom: 15px; /* Reduz o espaçamento em telas menores */
+  }
+
+  .logo-container .logo {
+    max-height: 60px; /* Ajusta a altura da logo para tablets */
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-container {
+    margin-bottom: 10px; /* Reduz ainda mais o espaçamento em telas pequenas */
+  }
+
+  .logo-container .logo {
+    max-height: 50px; /* Ajusta a altura da logo para celulares */
+  }
 }
 
 /* Barra de busca */
@@ -37,19 +66,20 @@ body {
   border-radius: 5px !important;
   font-size: 16px !important;
   cursor: pointer !important;
-  transition: background-color 0.3s ease !important;
+  transition: background-color 0.3s ease, transform 0.2s ease !important; /* Adiciona transição para cor e animação */
 }
 
 .add-button:hover {
-  background-color: #4a9a85;
+  background-color: #4b9987 !important; /* Vermelho igual ao botão Excluir */
+  transform: scale(1.05); /* Aumenta levemente o botão ao passar o mouse */
 }
 
 /* Container da lista de tênis */
 .tennis-list-container {
-  display: grid; /* Usa grid layout */
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Ajusta automaticamente o número de colunas */
-  gap: 20px; /* Espaçamento entre os itens */
-  justify-content: center; /* Centraliza os itens */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  justify-content: center;
   margin-top: 20px;
   padding: 10px;
 }
@@ -99,7 +129,7 @@ body {
 
 /* Botão Editar com cor azul */
 .btn-ver-mais {
-  background-color: #006aff;
+  background-color: #f6ea00;
   color: white;
   border: none;
   padding: 8px 16px;
@@ -110,7 +140,7 @@ body {
 }
 
 .btn-ver-mais:hover {
-  background-color: #0056b3;
+  background-color: #cfc400;
 }
 
 /* Botão Excluir com cor vermelha */
@@ -129,30 +159,44 @@ body {
   background-color: #cc0015;
 }
 
+/* Modal */
+.modal-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+}
+
+.modal-body {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+}
+
 /* Responsividade */
 @media (max-width: 768px) {
   .tennis-card-image-container {
-    height: 140px; /* Ajusta a altura da imagem em telas menores */
+    height: 140px;
   }
 
   .add-button {
-    font-size: 14px; /* Ajusta o tamanho do botão em telas menores */
+    font-size: 14px;
     padding: 8px 16px;
   }
 
   .search-container {
-    flex-direction: column; /* Empilha os elementos da barra de busca */
+    flex-direction: column;
     gap: 10px;
   }
 }
 
 @media (max-width: 480px) {
   .tennis-card-image-container {
-    height: 120px; /* Ajusta a altura da imagem em telas muito pequenas */
+    height: 120px;
   }
 
   .add-button {
-    font-size: 12px; /* Ajusta o tamanho do botão */
+    font-size: 12px;
     padding: 6px 12px;
   }
 }

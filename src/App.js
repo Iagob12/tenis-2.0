@@ -97,9 +97,11 @@ function App() {
                 ))}
             </div>
 
-            <Modal show={exibirModalAdicionar} onHide={() => setExibirModalAdicionar(false)}>
+            <Modal show={exibirModalAdicionar} onHide={() => setExibirModalAdicionar(false)} centered>
                 <Modal.Header closeButton>
-                    <Modal.Title>{tenisParaEditar ? 'Editar Tênis' : 'Adicionar Novo Tênis'}</Modal.Title>
+                    <Modal.Title className="modal-title">
+                        {tenisParaEditar ? 'Atualizar Tênis' : 'Adicionar Novo Tênis'}
+                    </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <TenisForm
