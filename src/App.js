@@ -60,8 +60,7 @@ function App() {
     };
 
     const filteredTenis = tenis.filter(t =>
-        t.modelo.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        t.marca.toLowerCase().includes(searchTerm.toLowerCase())
+        t.modelo.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
     const scrollLeft = () => {
@@ -99,7 +98,7 @@ function App() {
                     </InputGroup>
                 </Col>
                 <Col md="3" className="text-end">
-                    <Button variant="primary" onClick={() => setExibirModalAdicionar(true)}>
+                    <Button className="add-button" onClick={() => setExibirModalAdicionar(true)}>
                         Adicionar
                     </Button>
                 </Col>

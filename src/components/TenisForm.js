@@ -3,9 +3,7 @@ import { Form, Button } from 'react-bootstrap';
 
 const TenisForm = ({ tenisParaEditar, onSalvar, onCancelar }) => {
     const [modelo, setModelo] = useState('');
-    const [marca, setMarca] = useState('');
     const [tamanho, setTamanho] = useState('');
-    const [cor, setCor] = useState('');
     const [preco, setPreco] = useState('');
     const [imagemUrl, setImagemUrl] = useState('');
     const [errors, setErrors] = useState({});
@@ -13,16 +11,12 @@ const TenisForm = ({ tenisParaEditar, onSalvar, onCancelar }) => {
     useEffect(() => {
         if (tenisParaEditar) {
             setModelo(tenisParaEditar.modelo || '');
-            setMarca(tenisParaEditar.marca || '');
             setTamanho(tenisParaEditar.tamanho || '');
-            setCor(tenisParaEditar.cor || '');
             setPreco(tenisParaEditar.preco || '');
             setImagemUrl(tenisParaEditar.imagemUrl || '');
         } else {
             setModelo('');
-            setMarca('');
             setTamanho('');
-            setCor('');
             setPreco('');
             setImagemUrl('');
         }
@@ -35,10 +29,6 @@ const TenisForm = ({ tenisParaEditar, onSalvar, onCancelar }) => {
 
         if (!modelo.trim()) {
             newErrors.modelo = 'O modelo é obrigatório.';
-            isValid = false;
-        }
-        if (!marca.trim()) {
-            newErrors.marca = 'A marca é obrigatória.';
             isValid = false;
         }
         if (!tamanho) {
@@ -65,18 +55,14 @@ const TenisForm = ({ tenisParaEditar, onSalvar, onCancelar }) => {
         if (validateForm()) {
             const novoTenis = {
                 modelo,
-                marca,
                 tamanho: parseInt(tamanho),
-                cor,
                 preco: parseFloat(preco),
                 imagemUrl: imagemUrl,
             };
             onSalvar(novoTenis);
             if (!tenisParaEditar) {
                 setModelo('');
-                setMarca('');
                 setTamanho('');
-                setCor('');
                 setPreco('');
                 setImagemUrl('');
             }
@@ -100,19 +86,6 @@ const TenisForm = ({ tenisParaEditar, onSalvar, onCancelar }) => {
             </Form.Group>
 
             <Form.Group className="mb-3">
-                <Form.Label htmlFor="marca">Marca</Form.Label>
-                <Form.Control
-                    type="text"
-                    id="marca"
-                    placeholder="Digite a marca do tênis"
-                    value={marca}
-                    onChange={(e) => setMarca(e.target.value)}
-                    isInvalid={!!errors.marca}
-                />
-                <Form.Control.Feedback type="invalid">{errors.marca}</Form.Control.Feedback>
-            </Form.Group>
-
-            <Form.Group className="mb-3">
                 <Form.Label htmlFor="tamanho">Tamanho</Form.Label>
                 <Form.Control
                     type="number"
@@ -123,17 +96,6 @@ const TenisForm = ({ tenisParaEditar, onSalvar, onCancelar }) => {
                     isInvalid={!!errors.tamanho}
                 />
                 <Form.Control.Feedback type="invalid">{errors.tamanho}</Form.Control.Feedback>
-            </Form.Group>
-
-            <Form.Group className="mb-3">
-                <Form.Label htmlFor="cor">Cor</Form.Label>
-                <Form.Control
-                    type="text"
-                    id="cor"
-                    placeholder="Digite a cor principal"
-                    value={cor}
-                    onChange={(e) => setCor(e.target.value)}
-                />
             </Form.Group>
 
             <Form.Group className="mb-3">

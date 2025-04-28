@@ -8,7 +8,7 @@ body {
 
 /* Logo */
 .logo-container .logo {
-  max-height: 80px; /* Define uma altura máxima */
+  max-height: 100px; /* Define uma altura máxima */
   max-width: 100%; /* Garante que a largura seja proporcional */
   display: block;
   margin: 0 auto; /* Centraliza horizontalmente */
@@ -24,22 +24,6 @@ body {
 .search-button {
   border: none;
   background-color: transparent;
-}
-
-/* Botão Adicionar com cor verde */
-.add-button {
-  background-color: #28a745; /* Verde */
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.add-button:hover {
-  background-color: #218838; /* Verde mais escuro no hover */
 }
 
 /* Container da lista de tênis */
@@ -72,9 +56,7 @@ body {
   border: 1px solid #ddd;
 }
 
-.tennis-card:hover {
-  transform: translateY(-5px);
-}
+
 
 /* Imagem do tênis */
 .tennis-card-image-container {
@@ -102,38 +84,6 @@ body {
 .tennis-card-body p {
   margin: 5px 0;
   font-size: 0.9rem;
-}
-
-/* Botão Editar */
-.btn-ver-mais {
-  background-color: #007bff; /* Azul */
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin: 5px;
-}
-
-.btn-ver-mais:hover {
-  background-color: #0056b3; /* Azul mais escuro no hover */
-}
-
-/* Botão Excluir com cor vermelha */
-.btn-excluir {
-  background-color: #dc3545; /* Vermelho */
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin: 5px;
-}
-
-.btn-excluir:hover {
-  background-color: #c82333; /* Vermelho mais escuro no hover */
 }
 
 /* Botões de rolagem */
@@ -175,6 +125,46 @@ body {
 
 /* Personaliza o estilo de foco */
 button:focus, input:focus {
-  outline: 2px solid #007bff; /* Adiciona um contorno azul ao focar */
+  outline: 2px solid #58B49E; /* Adiciona um contorno verde ao focar */
   outline-offset: 2px; /* Espaçamento entre o contorno e o elemento */
+}
+/* Botão Adicionar com cor verde */
+.add-button {
+  background-color: #58B49E !important; /* Verde */
+  color: white !important;
+  border: none !important;
+  padding: 10px 20px !important;
+  border-radius: 5px !important;
+  font-size: 16px !important;
+  cursor: pointer !important;
+  transition: background-color 0.3s ease !important;
+}
+
+
+/* Botão Editar com cor azul */
+.btn-ver-mais {
+  background-color: #006aff !important; /* Azul */
+  color: white !important;
+  border: none !important;
+  padding: 8px 16px !important;
+  border-radius: 5px !important;
+  cursor: pointer !important;
+  transition: background-color 0.3s ease !important;
+  margin: 5px !important;
+}
+
+/* Botão Excluir com cor vermelha */
+.btn-excluir {
+  background-color: #ff0019 !important; /* Vermelho */
+  color: white !important;
+  border: none !important;
+  padding: 8px 16px !important;
+  border-radius: 5px !important;
+  cursor: pointer !important;
+  transition: background-color 0.3s ease !important;
+  margin: 5px !important;
+}
+
+.btn-excluir:hover {
+  background-color: #ff0019 !important; /* Vermelho mais escuro no hover */
 }
