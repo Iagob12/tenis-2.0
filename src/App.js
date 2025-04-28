@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Container, Row, Col, Button, InputGroup, FormControl, Modal } from 'react-bootstrap';
 import TenisForm from './components/TenisForm';
 import { getTenis, addTenis, updateTenis, deleteTenis } from './utils/localStorageUtils';
@@ -10,14 +10,27 @@ function App() {
     const [searchTerm, setSearchTerm] = useState('');
     const [exibirModalAdicionar, setExibirModalAdicionar] = useState(false);
     const [tenisParaEditar, setTenisParaEditar] = useState(null);
+    const [mostrarSetas, setMostrarSetas] = useState(false);
+
+    const tenisContainerRef = useRef(null);
 
     useEffect(() => {
         carregarTenis();
-    }, []);
+        verificarOverflow();
+        window.addEventListener('resize', verificarOverflow);
+        return () => window.removeEventListener('resize', verificarOverflow);
+    }, [tenis]);
 
     const carregarTenis = () => {
         const listaDeTenis = getTenis();
         setTenis(listaDeTenis);
+    };
+
+    const verificarOverflow = () => {
+        const container = tenisContainerRef.current;
+        if (container) {
+            setMostrarSetas(container.scrollWidth > container.clientWidth);
+        }
     };
 
     const handleSalvarTenis = (novoTenis) => {
@@ -52,11 +65,17 @@ function App() {
     );
 
     const scrollLeft = () => {
-        document.querySelector('.tennis-cards').scrollLeft -= 200;
+        const container = tenisContainerRef.current;
+        if (container) {
+            container.scrollLeft -= 200;
+        }
     };
 
     const scrollRight = () => {
-        document.querySelector('.tennis-cards').scrollLeft += 200;
+        const container = tenisContainerRef.current;
+        if (container) {
+            container.scrollLeft += 200;
+        }
     };
 
     return (
@@ -87,8 +106,10 @@ function App() {
             </Row>
 
             <div className="tennis-list-container">
-                <button className="scroll-button left" onClick={scrollLeft}>&lt;</button>
-                <div className="tennis-cards">
+                {mostrarSetas && (
+                    <button className="scroll-button left" onClick={scrollLeft}>&lt;</button>
+                )}
+                <div className="tennis-cards" ref={tenisContainerRef}>
                     {filteredTenis.map(tenis => (
                         <div key={tenis.id} className="tennis-card">
                             <div className="tennis-card-image-container">
@@ -107,7 +128,9 @@ function App() {
                         </div>
                     ))}
                 </div>
-                <button className="scroll-button right" onClick={scrollRight}>&gt;</button>
+                {mostrarSetas && (
+                    <button className="scroll-button right" onClick={scrollRight}>&gt;</button>
+                )}
             </div>
 
             <Modal show={exibirModalAdicionar} onHide={() => setExibirModalAdicionar(false)}>

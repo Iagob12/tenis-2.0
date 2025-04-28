@@ -3,11 +3,12 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+  user-select: none; /* Impede a seleção de texto */
 }
 
 /* Logo */
 .logo-container .logo {
-  max-height: 110px; /* Define uma altura máxima */
+  max-height: 80px; /* Define uma altura máxima */
   max-width: 100%; /* Garante que a largura seja proporcional */
   display: block;
   margin: 0 auto; /* Centraliza horizontalmente */
@@ -170,11 +171,6 @@ body {
 /* Remove o outline (bordas de foco) ao clicar nos elementos */
 * {
   outline: none;
-}
-
-/* Remove o comportamento de seleção de texto ao clicar */
-body {
-  user-select: none; /* Impede a seleção de texto */
 }
 
 /* Personaliza o estilo de foco */
