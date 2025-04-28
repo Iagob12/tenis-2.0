@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Button, InputGroup, FormControl, Modal } from 'react-bootstrap';
 import TenisForm from './components/TenisForm';
 import { getTenis, addTenis, updateTenis, deleteTenis } from './utils/localStorageUtils';
@@ -10,27 +10,14 @@ function App() {
     const [searchTerm, setSearchTerm] = useState('');
     const [exibirModalAdicionar, setExibirModalAdicionar] = useState(false);
     const [tenisParaEditar, setTenisParaEditar] = useState(null);
-    const [mostrarSetas, setMostrarSetas] = useState(false);
-
-    const tenisContainerRef = useRef(null);
 
     useEffect(() => {
         carregarTenis();
-        verificarOverflow();
-        window.addEventListener('resize', verificarOverflow);
-        return () => window.removeEventListener('resize', verificarOverflow);
-    }, [tenis]);
+    }, []);
 
     const carregarTenis = () => {
         const listaDeTenis = getTenis();
         setTenis(listaDeTenis);
-    };
-
-    const verificarOverflow = () => {
-        const container = tenisContainerRef.current;
-        if (container) {
-            setMostrarSetas(container.scrollWidth > container.clientWidth);
-        }
     };
 
     const handleSalvarTenis = (novoTenis) => {
@@ -63,20 +50,6 @@ function App() {
         t.modelo.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
-    const scrollLeft = () => {
-        const container = tenisContainerRef.current;
-        if (container) {
-            container.scrollLeft -= 200;
-        }
-    };
-
-    const scrollRight = () => {
-        const container = tenisContainerRef.current;
-        if (container) {
-            container.scrollLeft += 200;
-        }
-    };
-
     return (
         <Container className="mt-3">
             <Row className="mb-3 align-items-center top-bar">
@@ -105,31 +78,23 @@ function App() {
             </Row>
 
             <div className="tennis-list-container">
-                {mostrarSetas && (
-                    <button className="scroll-button left" onClick={scrollLeft}>&lt;</button>
-                )}
-                <div className="tennis-cards" ref={tenisContainerRef}>
-                    {filteredTenis.map(tenis => (
-                        <div key={tenis.id} className="tennis-card">
-                            <div className="tennis-card-image-container">
-                                {tenis.imagemUrl ? (
-                                    <img src={tenis.imagemUrl} alt={tenis.modelo} className="tennis-card-image" />
-                                ) : (
-                                    <div className="tennis-card-image-placeholder"></div>
-                                )}
-                            </div>
-                            <div className="tennis-card-body">
-                                <p>Modelo: {tenis.modelo}</p>
-                                <p>Preço: R$ {tenis.preco.toFixed(2)}</p>
-                                <button className="btn-ver-mais" onClick={() => handleEditarTenis(tenis.id)}>Editar</button>
-                                <button className="btn-excluir" onClick={() => handleExcluirTenis(tenis.id)}>Excluir</button>
-                            </div>
+                {filteredTenis.map(tenis => (
+                    <div key={tenis.id} className="tennis-card">
+                        <div className="tennis-card-image-container">
+                            {tenis.imagemUrl ? (
+                                <img src={tenis.imagemUrl} alt={tenis.modelo} className="tennis-card-image" />
+                            ) : (
+                                <div className="tennis-card-image-placeholder"></div>
+                            )}
                         </div>
-                    ))}
-                </div>
-                {mostrarSetas && (
-                    <button className="scroll-button right" onClick={scrollRight}>&gt;</button>
-                )}
+                        <div className="tennis-card-body">
+                            <p>Modelo: {tenis.modelo}</p>
+                            <p>Preço: R$ {tenis.preco.toFixed(2)}</p>
+                            <button className="btn-ver-mais" onClick={() => handleEditarTenis(tenis.id)}>Editar</button>
+                            <button className="btn-excluir" onClick={() => handleExcluirTenis(tenis.id)}>Excluir</button>
+                        </div>
+                    </div>
+                ))}
             </div>
 
             <Modal show={exibirModalAdicionar} onHide={() => setExibirModalAdicionar(false)}>

@@ -8,17 +8,19 @@ body {
 
 /* Logo */
 .logo-container .logo {
-  max-height: 100px; /* Define uma altura máxima */
-  max-width: 100%; /* Garante que a largura seja proporcional */
+  max-height: 100px;
+  max-width: 100%;
   display: block;
-  margin: 0 auto; /* Centraliza horizontalmente */
-  object-fit: contain; /* Mantém a proporção da imagem */
+  margin: 0 auto;
+  object-fit: contain;
 }
 
 /* Barra de busca */
 .search-container {
   display: flex;
   align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
 .search-button {
@@ -26,37 +28,46 @@ body {
   background-color: transparent;
 }
 
-/* Container da lista de tênis */
-.tennis-list-container {
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  position: relative;
-  margin-top: 20px;
+/* Botão Adicionar com cor verde */
+.add-button {
+  background-color: #58B49E !important; /* Verde */
+  color: white !important;
+  border: none !important;
+  padding: 10px 20px !important;
+  border-radius: 5px !important;
+  font-size: 16px !important;
+  cursor: pointer !important;
+  transition: background-color 0.3s ease !important;
 }
 
-/* Cards de tênis */
-.tennis-cards {
-  display: flex;
-  gap: 20px;
-  overflow-x: auto;
-  scroll-behavior: smooth;
+.add-button:hover {
+  background-color: #4a9a85;
+}
+
+/* Container da lista de tênis */
+.tennis-list-container {
+  display: grid; /* Usa grid layout */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Ajusta automaticamente o número de colunas */
+  gap: 20px; /* Espaçamento entre os itens */
+  justify-content: center; /* Centraliza os itens */
+  margin-top: 20px;
   padding: 10px;
 }
 
+/* Cards de tênis */
 .tennis-card {
   background-color: #f8f9fa;
   border-radius: 10px;
   padding: 15px;
-  width: 220px;
   text-align: center;
-  flex-shrink: 0;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
   border: 1px solid #ddd;
 }
 
-
+.tennis-card:hover {
+  transform: translateY(-5px);
+}
 
 /* Imagem do tênis */
 .tennis-card-image-container {
@@ -86,85 +97,62 @@ body {
   font-size: 0.9rem;
 }
 
-/* Botões de rolagem */
-.scroll-button {
-  background-color: rgba(255, 255, 255, 0.8);
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease;
-}
-
-.scroll-button:hover {
-  background-color: rgba(255, 255, 255, 1);
-}
-
-.scroll-button.left {
-  left: 10px;
-}
-
-.scroll-button.right {
-  right: 10px;
-}
-
-/* Remove o outline (bordas de foco) ao clicar nos elementos */
-* {
-  outline: none;
-}
-
-/* Personaliza o estilo de foco */
-button:focus, input:focus {
-  outline: 2px solid #58B49E; /* Adiciona um contorno verde ao focar */
-  outline-offset: 2px; /* Espaçamento entre o contorno e o elemento */
-}
-/* Botão Adicionar com cor verde */
-.add-button {
-  background-color: #58B49E !important; /* Verde */
-  color: white !important;
-  border: none !important;
-  padding: 10px 20px !important;
-  border-radius: 5px !important;
-  font-size: 16px !important;
-  cursor: pointer !important;
-  transition: background-color 0.3s ease !important;
-}
-
-
 /* Botão Editar com cor azul */
 .btn-ver-mais {
-  background-color: #006aff !important; /* Azul */
-  color: white !important;
-  border: none !important;
-  padding: 8px 16px !important;
-  border-radius: 5px !important;
-  cursor: pointer !important;
-  transition: background-color 0.3s ease !important;
-  margin: 5px !important;
+  background-color: #006aff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 5px;
+}
+
+.btn-ver-mais:hover {
+  background-color: #0056b3;
 }
 
 /* Botão Excluir com cor vermelha */
 .btn-excluir {
-  background-color: #ff0019 !important; /* Vermelho */
-  color: white !important;
-  border: none !important;
-  padding: 8px 16px !important;
-  border-radius: 5px !important;
-  cursor: pointer !important;
-  transition: background-color 0.3s ease !important;
-  margin: 5px !important;
+  background-color: #ff0019;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 5px;
 }
 
 .btn-excluir:hover {
-  background-color: #ff0019 !important; /* Vermelho mais escuro no hover */
+  background-color: #cc0015;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .tennis-card-image-container {
+    height: 140px; /* Ajusta a altura da imagem em telas menores */
+  }
+
+  .add-button {
+    font-size: 14px; /* Ajusta o tamanho do botão em telas menores */
+    padding: 8px 16px;
+  }
+
+  .search-container {
+    flex-direction: column; /* Empilha os elementos da barra de busca */
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tennis-card-image-container {
+    height: 120px; /* Ajusta a altura da imagem em telas muito pequenas */
+  }
+
+  .add-button {
+    font-size: 12px; /* Ajusta o tamanho do botão */
+    padding: 6px 12px;
+  }
 }
