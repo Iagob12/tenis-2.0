@@ -1,26 +1,34 @@
-Sistema de Gerenciamento de Tênis:
-Este é um sistema simples e responsivo para gerenciar uma lista de tênis. Ele permite adicionar, editar, excluir e buscar tênis, com os dados armazenados no LocalStorage do navegador.
+🏀 Sistema de Gerenciamento de Tênis
+Um sistema web simples, responsivo e intuitivo para gerenciar uma coleção de tênis. Permite adicionar, editar, excluir e buscar modelos, com os dados armazenados de forma persistente no navegador via LocalStorage.
 
-Funcionalidades
-1. Gerenciamento de Tênis
-Adicionar Tênis: Adicione um novo tênis com informações como modelo, tamanho, preço e URL da imagem.
-Editar Tênis: Atualize os dados de um tênis existente.
-Excluir Tênis: Remova um tênis da lista.
-Buscar Tênis: Filtre os tênis pelo modelo em tempo real.
+✨ Funcionalidades
+1. 📦 Gerenciamento de Tênis
+Adicionar Tênis: Insira informações como modelo, tamanho, preço e imagem (via URL).
 
-2. Persistência de Dados
-Os dados são armazenados no LocalStorage, garantindo que a lista de tênis seja mantida mesmo após recarregar a página.
+Editar Tênis: Atualize os dados de qualquer tênis existente.
 
-3. Layout Responsivo
-O layout é responsivo e se adapta a diferentes tamanhos de tela (desktop, tablet e celular).
-A logo e os cards de tênis foram ajustados para se encaixar bem em qualquer dispositivo.
+Excluir Tênis: Remova modelos da lista com facilidade.
 
-4. Estilo e Animações
-Botões com animações e mudanças de cor ao passar o mouse.
-Cards de tênis com efeito de elevação ao passar o mouse.
-Modal estilizado para adicionar ou editar tênis.
+Buscar Tênis: Filtro em tempo real por nome do modelo.
 
-Tecnologias Utilizadas:
-React: Biblioteca JavaScript para construção de interfaces de usuário.
+2. 💾 Persistência de Dados
+Os dados são salvos no LocalStorage, garantindo que sua lista permaneça mesmo após recarregar ou fechar o navegador.
+
+3. 📱 Layout Responsivo
+Totalmente adaptável a diferentes tamanhos de tela: desktop, tablet e mobile.
+
+Logo e cards de tênis ajustados para uma visualização agradável em qualquer dispositivo.
+
+4. 🎨 Estilo e Animações
+Botões com animações e transições de cor ao passar o mouse.
+
+Cards com efeito de elevação (hover) para destacar os produtos.
+
+Modal estilizado e responsivo para adicionar e editar modelos.
+
+🛠️ Tecnologias Utilizadas
+React: Biblioteca JavaScript para construção da interface.
+
 Bootstrap: Framework CSS para estilização e responsividade.
-LocalStorage: Para persistência de dados no navegador.
+
+LocalStorage: Para persistência dos dados no navegador.
